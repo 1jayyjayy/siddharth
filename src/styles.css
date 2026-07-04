@@ -1,0 +1,190 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Siddharth Biswas — an interactive score.
+ * Palette: warm off-white bone, deep espresso, copper accent.
+ * Type: Fraunces (display serif), Inter (humanist sans, UI/body),
+ *       JetBrains Mono (technical / archive metadata).
+ */
+
+@theme inline {
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-bone: var(--bone);
+  --color-bone-2: var(--bone-2);
+  --color-espresso: var(--espresso);
+  --color-espresso-2: var(--espresso-2);
+  --color-copper: var(--copper);
+  --color-copper-soft: var(--copper-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Warm off-white / deep espresso system */
+  --bone: oklch(0.955 0.012 82);        /* #F5F1EA-ish */
+  --bone-2: oklch(0.918 0.014 82);      /* slightly darker card */
+  --espresso: oklch(0.155 0.012 55);    /* #14100D-ish */
+  --espresso-2: oklch(0.215 0.014 55);  /* raised surface on dark */
+  --copper: oklch(0.628 0.108 55);      /* #B8794B-ish */
+  --copper-soft: oklch(0.72 0.075 60);
+  --ink: oklch(0.19 0.012 55);
+  --ink-soft: oklch(0.42 0.012 55);
+
+  --background: var(--bone);
+  --foreground: var(--ink);
+  --card: var(--bone-2);
+  --card-foreground: var(--ink);
+  --popover: var(--bone);
+  --popover-foreground: var(--ink);
+  --primary: var(--espresso);
+  --primary-foreground: var(--bone);
+  --secondary: oklch(0.9 0.012 82);
+  --secondary-foreground: var(--ink);
+  --muted: oklch(0.92 0.01 82);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--copper);
+  --accent-foreground: var(--bone);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: var(--bone);
+  --border: oklch(0.19 0.012 55 / 0.14);
+  --input: oklch(0.19 0.012 55 / 0.14);
+  --ring: var(--copper);
+}
+
+/* Utility: paper grain overlay, hairline column rules, dark-section variant */
+@utility grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0 0.05 0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+}
+
+@utility grain-dark {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.09;
+    mix-blend-mode: screen;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.9 0 0 0 0 0.82 0 0 0 0.9 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+}
+
+@utility rule-h {
+  border-top: 1px solid color-mix(in oklab, currentColor 22%, transparent);
+}
+
+@utility copper-link {
+  color: var(--copper);
+  position: relative;
+  transition: color 200ms ease;
+  &:hover { color: var(--espresso); }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform-origin: right;
+    transform: scaleX(1);
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover::after { transform-origin: left; transform: scaleX(1); }
+}
+
+/* Section on espresso ground */
+@utility section-dark {
+  background: var(--espresso);
+  color: var(--bone);
+}
+
+/* Reveal on scroll */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  &.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Card lift — score fragment */
+@utility card-artifact {
+  background: var(--bone-2);
+  border: 1px solid color-mix(in oklab, var(--espresso) 12%, transparent);
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  &:hover {
+    transform: translateY(-4px) rotate(-0.35deg);
+    box-shadow:
+      0 1px 0 color-mix(in oklab, var(--espresso) 8%, transparent),
+      0 24px 40px -24px color-mix(in oklab, var(--espresso) 40%, transparent);
+  }
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-sans); background: var(--background); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  ::selection { background: var(--copper); color: var(--bone); }
+}
