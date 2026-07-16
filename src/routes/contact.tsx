@@ -190,6 +190,71 @@ function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+// const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+//   e.preventDefault();
+
+//   if (isSubmitting) return;
+
+//   const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+//   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+//   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+//   if (!serviceId || !templateId || !publicKey) {
+//     toast.error("Email service is not configured.", {
+//       description: "One or more EmailJS environment variables are missing.",
+//     });
+//     return;
+//   }
+
+//   setIsSubmitting(true);
+
+//   try {
+//     await emailjs.send(
+//       serviceId,
+//       templateId,
+//       {
+//         from_name: formData.name,
+//         reply_to: formData.email,
+//         subject: formData.subject,
+//         message: formData.message,
+//       },
+//       {
+//         publicKey,
+//       },
+//     );
+
+//     toast.success("Message Sent Successfully!", {
+//       description:
+//         "Thank you for reaching out. I'll respond to your inquiry as soon as possible.",
+//       duration: 6000,
+//       className: "bg-accent text-accent-foreground border-accent",
+//     });
+
+//     setFormData({
+//       name: "",
+//       email: "",
+//       subject: "",
+//       message: "",
+//     });
+//   } catch (error: unknown) {
+//     console.error("EmailJS error:", error);
+
+//     const errorMessage =
+//       typeof error === "object" &&
+//       error !== null &&
+//       "text" in error &&
+//       typeof error.text === "string"
+//         ? error.text
+//         : "Please try again or contact me directly by email.";
+
+//     toast.error("Message could not be sent.", {
+//       description: errorMessage,
+//       duration: 6000,
+//     });
+//   } finally {
+//     setIsSubmitting(false);
+//   }
+// };
 const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
@@ -199,7 +264,16 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+  console.group("📧 EmailJS Debug");
+  console.log("Service ID:", serviceId);
+  console.log("Template ID:", templateId);
+  console.log("Public Key:", publicKey);
+  console.log("Form Data:", formData);
+
   if (!serviceId || !templateId || !publicKey) {
+    console.error("❌ Missing environment variables");
+    console.groupEnd();
+
     toast.error("Email service is not configured.", {
       description: "One or more EmailJS environment variables are missing.",
     });
@@ -209,7 +283,9 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   setIsSubmitting(true);
 
   try {
-    await emailjs.send(
+    console.log("🚀 Sending email...");
+
+    const response = await emailjs.send(
       serviceId,
       templateId,
       {
@@ -222,6 +298,10 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         publicKey,
       },
     );
+
+    console.log("✅ EmailJS Success");
+    console.log("Response:", response);
+    console.groupEnd();
 
     toast.success("Message Sent Successfully!", {
       description:
@@ -236,26 +316,34 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
       subject: "",
       message: "",
     });
-  } catch (error: unknown) {
-    console.error("EmailJS error:", error);
+  } catch (error: any) {
+    console.error("❌ EmailJS Error");
+    console.error("Raw error:", error);
+    console.error("Status:", error?.status);
+    console.error("Text:", error?.text);
+    console.error("Name:", error?.name);
+    console.error("Message:", error?.message);
 
-    const errorMessage =
-      typeof error === "object" &&
-      error !== null &&
-      "text" in error &&
-      typeof error.text === "string"
-        ? error.text
-        : "Please try again or contact me directly by email.";
+    try {
+      console.error(
+        "JSON:",
+        JSON.stringify(error, Object.getOwnPropertyNames(error), 2)
+      );
+    } catch (_) {}
+
+    console.groupEnd();
 
     toast.error("Message could not be sent.", {
-      description: errorMessage,
+      description:
+        error?.text ??
+        error?.message ??
+        "Please try again or contact me directly by email.",
       duration: 6000,
     });
   } finally {
     setIsSubmitting(false);
   }
 };
-
   const getSocialHref = (platform: string) =>
     site.socials.find((s) =>
       s.label.toLowerCase().includes(platform.toLowerCase()),
