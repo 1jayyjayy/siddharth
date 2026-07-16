@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Footer } from "@/components/Footer";
 import { useReveal } from "@/components/useReveal";
 import { site, timeline } from "@/data/site";
+import siddharthImg from "@/assets/siddharth.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -46,22 +47,21 @@ function About() {
           <div className="col-span-12 md:col-span-5 md:col-start-1 reveal">
             <figure className="relative">
               <div className="aspect-[4/5] overflow-hidden bg-espresso-2">
-                <img
-                  src="https://picsum.photos/seed/sb-portrait/1000/1250"
-                  alt="Portrait of Siddharth Biswas"
-                  className="h-full w-full object-cover grayscale contrast-[1.05]"
-                />
+              <img
+  src={siddharthImg}
+  alt="Portrait of Siddharth Biswas"
+  className="h-full w-full object-cover grayscale contrast-[1.05]"
+/>
               </div>
               <figcaption className="mt-3 flex items-baseline justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
                 <span>Plate 01 — Studio, {new Date().getFullYear()}</span>
-                <span>Photo: placeholder</span>
               </figcaption>
-              {/* offset color plate accent */}
+       
               <div className="pointer-events-none absolute -right-4 -top-4 -z-0 h-24 w-24 bg-copper/70" />
             </figure>
           </div>
 
-          <div className="col-span-12 md:col-span-6 md:col-start-7 md:pt-16">
+          {/* <div className="col-span-12 md:col-span-6 md:col-start-7 md:pt-16">
             <div className="reveal">
               <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-copper">
                 Practice
@@ -101,9 +101,81 @@ function About() {
                 practice built on doubt.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
+          </div> */}
+         <div className="col-span-12 md:col-span-6 md:col-start-7 md:pt-16 reveal">
+  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-copper">
+    Biography
+  </p>
+
+  <p className="mt-6 text-2xl leading-relaxed">
+    I am Siddharth Biswas, a composer, performer and PhD researcher in
+    Creative Music Practice at the University of Edinburgh.
+  </p>
+</div>
+</div>
+
+<div className="mx-auto mt-20 max-w-5xl px-6 md:px-10">
+  <div
+    className="reveal space-y-8 text-lg leading-[1.95] text-espresso"
+    data-reveal-delay="160"
+  >
+    <p>
+      My work begins with music made through the body: hands moving across
+      a piano, the physical phrasing of the sitar, the rhythm of the
+      voice, and the energy exchanged between performers and audiences.
+      From there, it expands into camera tracking, gesture, EEG,
+      browser-based systems and interactive environments.
+    </p>
+
+    <p>
+      I grew up between several musical languages. My practice brings
+      together Western classical composition, Indian classical music,
+      piano performance, sitar, beatboxing, looping and creative music
+      technology. Rather than treating these as separate disciplines, I
+      use them to ask how an instrument might behave differently—and who
+      might be allowed to play it.
+    </p>
+
+    <p>
+      Much of my current work explores systems in which movement becomes
+      compositional material. A hand gesture might alter a harmony; a
+      dancer’s position might reorganise a room of sound; an audience
+      might collectively shape a performance through their phones; or a
+      system might deliberately respond in an uncertain or unexpected way.
+    </p>
+
+    <p>
+      I am particularly interested in the relationships between composer,
+      performer, audience and instrument. My PhD asks how musical agency
+      can be distributed across bodies, brains, sensors, code and
+      space—creating situations in which music is not simply delivered to
+      an audience, but negotiated between everyone and everything present.
+    </p>
+
+    <p>
+      Alongside my research, I continue to perform, compose, teach and
+      collaborate with musicians, dancers, artists and creative
+      technologists. My projects range from intimate piano and beatbox
+      performances to interactive installations, participatory browser
+      works and experimental gesture-controlled instruments.
+    </p>
+  </div>
+
+  <blockquote
+    className="reveal mt-20 border-l-2 border-copper pl-8"
+    data-reveal-delay="240"
+  >
+    <p className="font-display text-3xl italic leading-snug text-espresso md:text-4xl">
+      “What does an instrument become when it is distributed across
+      multiple bodies?”
+    </p>
+
+    <footer className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-ink-soft">
+      — Central research question
+    </footer>
+  </blockquote>
+</div>
+</section>
 
       {/* Timeline (asymmetric) */}
       <section className="section-dark grain-dark relative py-28">
