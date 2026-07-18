@@ -182,13 +182,153 @@ export const projects: Project[] = [
   },
 ];
 
+// export const performances = [
+//   { date: "2026-04-11", venue: "NIME 2026, Canberra", city: "AU", title: "Gesture / EEG Duet (solo)", note: "Paper + performance in the main programme.", image: img("perf1", 900, 600) },
+//   { date: "2025-11-02", venue: "Cafe OTO", city: "London", title: "Weekday set — Gesture-to-MIDI Studies", note: "Long-form solo, second of three commissioned nights.", image: img("perf2", 900, 600) },
+//   { date: "2025-06-14", venue: "SARC Sonorities Festival", city: "Belfast", title: "Room as a Score (revival)", note: "Reworked for the Sonic Lab, with in-house ensemble.", image: img("perf3", 900, 600) },
+//   { date: "2025-03-08", venue: "IKLECTIK", city: "London", title: "Audience Bubble Patterns", note: "Residency closing performance.", image: img("perf4", 900, 600) },
+//   { date: "2024-10-21", venue: "The Yard", city: "London", title: "Dance and MediaPipe (WIP)", note: "Duet showing with Ana R. — 30 minutes.", image: img("perf5", 900, 600) },
+//   { date: "2024-05-17", venue: "Chapel, South London", city: "London", title: "Room as a Score — premiere", note: "Three consecutive evenings, distinct scores.", image: img("perf6", 900, 600) },
+// ];
+
 export const performances = [
-  { date: "2026-04-11", venue: "NIME 2026, Canberra", city: "AU", title: "Gesture / EEG Duet (solo)", note: "Paper + performance in the main programme.", image: img("perf1", 900, 600) },
-  { date: "2025-11-02", venue: "Cafe OTO", city: "London", title: "Weekday set — Gesture-to-MIDI Studies", note: "Long-form solo, second of three commissioned nights.", image: img("perf2", 900, 600) },
-  { date: "2025-06-14", venue: "SARC Sonorities Festival", city: "Belfast", title: "Room as a Score (revival)", note: "Reworked for the Sonic Lab, with in-house ensemble.", image: img("perf3", 900, 600) },
-  { date: "2025-03-08", venue: "IKLECTIK", city: "London", title: "Audience Bubble Patterns", note: "Residency closing performance.", image: img("perf4", 900, 600) },
-  { date: "2024-10-21", venue: "The Yard", city: "London", title: "Dance and MediaPipe (WIP)", note: "Duet showing with Ana R. — 30 minutes.", image: img("perf5", 900, 600) },
-  { date: "2024-05-17", venue: "Chapel, South London", city: "London", title: "Room as a Score — premiere", note: "Three consecutive evenings, distinct scores.", image: img("perf6", 900, 600) },
+  {
+    slug: "gesture-eeg-duet-solo",
+    date: "2026-04-11",
+    venue: "NIME 2026, Canberra",
+    city: "AU",
+    title: "Gesture / EEG Duet (solo)",
+    note: "Paper + performance in the main programme.",
+    image: img("perf1", 900, 600),
+
+    summary:
+      "A solo performance exploring the dialogue between conscious gesture and involuntary neural activity through EEG-driven sound synthesis.",
+    programme:
+      "Presented as part of the NIME 2026 main programme following the accompanying research paper. The work combined gesture tracking, EEG, and live electronics into a forty-minute performance.",
+    context:
+      "Developed during the second year of doctoral research as an exploration of embodied interaction and performer-system negotiation.",
+    collaborators:
+      "Solo performance. Technical support by the NIME production team.",
+    instrumentation:
+      "Muse 2 EEG headset, MediaPipe hand tracking, Max/MSP, Ableton Live, custom granular synthesis engine, quadraphonic speaker setup.",
+    reflection:
+      "The performance revealed moments where unintended neural fluctuations became musically meaningful, blurring the distinction between deliberate and unconscious expression.",
+  },
+
+  {
+    slug: "gesture-to-midi-studies-cafe-oto",
+    date: "2025-11-02",
+    venue: "Cafe OTO",
+    city: "London",
+    title: "Weekday set — Gesture-to-MIDI Studies",
+    note: "Long-form solo, second of three commissioned nights.",
+    image: img("perf2", 900, 600),
+
+    summary:
+      "An evening of evolving gesture-controlled studies using custom camera-tracked performance interfaces.",
+    programme:
+      "The programme consisted of five independent studies, each investigating a different mapping between physical movement and instrumental response.",
+    context:
+      "Commissioned by Cafe OTO as part of its Weekday Series, encouraging experimental approaches to live electronic performance.",
+    collaborators:
+      "Solo performance with technical assistance from the venue production staff.",
+    instrumentation:
+      "MediaPipe, Max/MSP, Ableton Live, Kontakt instruments, Logitech Brio camera, prepared piano samples.",
+    reflection:
+      "Performing multiple studies back-to-back highlighted how audiences gradually learned the instrument alongside the performer.",
+  },
+
+  {
+    slug: "room-as-a-score-revival",
+    date: "2025-06-14",
+    venue: "SARC Sonorities Festival",
+    city: "Belfast",
+    title: "Room as a Score (revival)",
+    note: "Reworked for the Sonic Lab, with in-house ensemble.",
+    image: img("perf3", 900, 600),
+
+    summary:
+      "A revised version of the installation-performance where audience positioning continuously generated the musical score.",
+    programme:
+      "The Sonic Lab's spatial audio environment allowed the work to expand into an immersive multichannel experience.",
+    context:
+      "Reimagined after the London premiere to exploit the acoustics and loudspeaker array of SARC's Sonic Lab.",
+    collaborators:
+      "Performed with the SARC in-house ensemble and festival technical team.",
+    instrumentation:
+      "Azure Kinect depth camera, TouchDesigner, SuperCollider, multichannel speaker system, live chamber ensemble.",
+    reflection:
+      "The architecture itself became an active participant, making each audience arrangement uniquely audible.",
+  },
+
+  {
+    slug: "audience-bubble-patterns-iklectik",
+    date: "2025-03-08",
+    venue: "IKLECTIK",
+    city: "London",
+    title: "Audience Bubble Patterns",
+    note: "Residency closing performance.",
+    image: img("perf4", 900, 600),
+
+    summary:
+      "A live study examining how audience proximity and movement shape ensemble behaviour.",
+    programme:
+      "The work transformed audience density into dynamic musical parameters controlling balance, texture, and spatialisation.",
+    context:
+      "Created during a month-long residency investigating camera-based audience analysis.",
+    collaborators:
+      "Performed with a four-member improvisation ensemble.",
+    instrumentation:
+      "Dual overhead cameras, YOLO-based audience detection, OSC routing, Max/MSP conducting system.",
+    reflection:
+      "The audience unknowingly became co-performers, influencing every musical decision without direct interaction.",
+  },
+
+  {
+    slug: "dance-and-mediapipe-work-in-progress",
+    date: "2024-10-21",
+    venue: "The Yard",
+    city: "London",
+    title: "Dance and MediaPipe (WIP)",
+    note: "Duet showing with Ana R. — 30 minutes.",
+    image: img("perf5", 900, 600),
+
+    summary:
+      "An early public showing exploring how dance movement can drive interactive musical structures through skeletal tracking.",
+    programme:
+      "The work alternated between choreographed passages and improvised interactions with live-generated sound.",
+    context:
+      "Presented as a work-in-progress to gather audience feedback before further development.",
+    collaborators:
+      "Duet with dancer Ana R. and technical consultation from movement researchers.",
+    instrumentation:
+      "MediaPipe Pose, TouchDesigner, Ableton Live, projection mapping, stereo sound system.",
+    reflection:
+      "The showing exposed how expressive movement often emerged during technical imperfections rather than despite them.",
+  },
+
+  {
+    slug: "room-as-a-score-premiere",
+    date: "2024-05-17",
+    venue: "Chapel, South London",
+    city: "London",
+    title: "Room as a Score — premiere",
+    note: "Three consecutive evenings, distinct scores.",
+    image: img("perf6", 900, 600),
+
+    summary:
+      "The premiere presentation of an audience-responsive performance where architectural space became the musical score.",
+    programme:
+      "Three performances over consecutive evenings, each producing an entirely different score through audience arrangement and movement.",
+    context:
+      "The work marked the first public realization of the Room as a Score research project.",
+    collaborators:
+      "Solo performance with support from the hosting venue and production volunteers.",
+    instrumentation:
+      "Azure Kinect, custom projection software, SuperCollider, live electronics, architectural projection.",
+    reflection:
+      "The premiere demonstrated that no two performances could ever be identical, as the audience itself became the composition.",
+  },
 ];
 
 export const writings = [

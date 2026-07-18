@@ -18,7 +18,9 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
+import { Route as PerformancesIndexRouteImport } from './routes/performances.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as PerformancesSlugRouteImport } from './routes/performances.$slug'
 
 const WritingsRoute = WritingsRouteImport.update({
   id: '/writings',
@@ -65,33 +67,46 @@ const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ProjectsRoute,
 } as any)
+const PerformancesIndexRoute = PerformancesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PerformancesRoute,
+} as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ProjectsRoute,
+} as any)
+const PerformancesSlugRoute = PerformancesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => PerformancesRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/performances': typeof PerformancesRoute
+  '/performances': typeof PerformancesRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/writings': typeof WritingsRoute
+  '/performances/$slug': typeof PerformancesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/performances/': typeof PerformancesIndexRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/performances': typeof PerformancesRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/writings': typeof WritingsRoute
+  '/performances/$slug': typeof PerformancesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/performances': typeof PerformancesIndexRoute
   '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
@@ -99,12 +114,14 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/performances': typeof PerformancesRoute
+  '/performances': typeof PerformancesRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/writings': typeof WritingsRoute
+  '/performances/$slug': typeof PerformancesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/performances/': typeof PerformancesIndexRoute
   '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
@@ -118,18 +135,21 @@ export interface FileRouteTypes {
     | '/research'
     | '/sitemap.xml'
     | '/writings'
+    | '/performances/$slug'
     | '/projects/$slug'
+    | '/performances/'
     | '/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
-    | '/performances'
     | '/research'
     | '/sitemap.xml'
     | '/writings'
+    | '/performances/$slug'
     | '/projects/$slug'
+    | '/performances'
     | '/projects'
   id:
     | '__root__'
@@ -141,7 +161,9 @@ export interface FileRouteTypes {
     | '/research'
     | '/sitemap.xml'
     | '/writings'
+    | '/performances/$slug'
     | '/projects/$slug'
+    | '/performances/'
     | '/projects/'
   fileRoutesById: FileRoutesById
 }
@@ -149,7 +171,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  PerformancesRoute: typeof PerformancesRoute
+  PerformancesRoute: typeof PerformancesRouteWithChildren
   ProjectsRoute: typeof ProjectsRouteWithChildren
   ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -221,6 +243,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsIndexRouteImport
       parentRoute: typeof ProjectsRoute
     }
+    '/performances/': {
+      id: '/performances/'
+      path: '/'
+      fullPath: '/performances/'
+      preLoaderRoute: typeof PerformancesIndexRouteImport
+      parentRoute: typeof PerformancesRoute
+    }
     '/projects/$slug': {
       id: '/projects/$slug'
       path: '/$slug'
@@ -228,8 +257,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof ProjectsRoute
     }
+    '/performances/$slug': {
+      id: '/performances/$slug'
+      path: '/$slug'
+      fullPath: '/performances/$slug'
+      preLoaderRoute: typeof PerformancesSlugRouteImport
+      parentRoute: typeof PerformancesRoute
+    }
   }
 }
+
+interface PerformancesRouteChildren {
+  PerformancesSlugRoute: typeof PerformancesSlugRoute
+  PerformancesIndexRoute: typeof PerformancesIndexRoute
+}
+
+const PerformancesRouteChildren: PerformancesRouteChildren = {
+  PerformancesSlugRoute: PerformancesSlugRoute,
+  PerformancesIndexRoute: PerformancesIndexRoute,
+}
+
+const PerformancesRouteWithChildren = PerformancesRoute._addFileChildren(
+  PerformancesRouteChildren,
+)
 
 interface ProjectsRouteChildren {
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -249,7 +299,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  PerformancesRoute: PerformancesRoute,
+  PerformancesRoute: PerformancesRouteWithChildren,
   ProjectsRoute: ProjectsRouteWithChildren,
   ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
