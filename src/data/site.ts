@@ -8,19 +8,59 @@ export const site = {
   location: "Edinburgh / Scotland",
   email: "siddhu.biswas@gmail.com",
   socials: [
-    { label: "Email", value: "siddhu.biswas@gmail.com", href: "mailto:siddhu.biswas@gmail.com", kind: "channel" },
-    { label: "Instagram — performance archive", value: "@sid.biswas", href: "https://instagram.com/the_fallen_symphony/", kind: "instrument" },
-    { label: "LinkedIn", value: "@sid.biswas", href: "https://uk.linkedin.com/in/siddharth-biswas-639866207", kind: "instrument" },
-    { label: "Facebook", value: "@sid.biswas", href: "https://www.facebook.com/siddharth.biswas.37", kind: "instrument" },
-    { label: "Whatsapp", value: "@sid.biswas", href: "https://wa.me/447432499307", kind: "instrument" },
-    // { label: "YouTube — documentation", value: "Siddharth Biswas", href: "https://youtube.com", kind: "instrument" },  
-    { label: "Google Scholar", value: "Publications & citations", href: "https://scholar.google.com", kind: "channel" },
-    { label: "ResearchGate", value: "PhD progress & preprints", href: "https://researchgate.net", kind: "channel" },
-    { label: "GitHub — /gesture-studies", value: "Open patches & sketches", href: "https://github.com", kind: "instrument" },
+    {
+      label: "Email",
+      value: "siddhu.biswas@gmail.com",
+      href: "mailto:siddhu.biswas@gmail.com",
+      kind: "channel",
+    },
+    {
+      label: "Instagram — performance archive",
+      value: "@sid.biswas",
+      href: "https://instagram.com/the_fallen_symphony/",
+      kind: "instrument",
+    },
+    {
+      label: "LinkedIn",
+      value: "@sid.biswas",
+      href: "https://uk.linkedin.com/in/siddharth-biswas-639866207",
+      kind: "instrument",
+    },
+    {
+      label: "Facebook",
+      value: "@sid.biswas",
+      href: "https://www.facebook.com/siddharth.biswas.37",
+      kind: "instrument",
+    },
+    {
+      label: "Whatsapp",
+      value: "@sid.biswas",
+      href: "https://wa.me/447432499307",
+      kind: "instrument",
+    },
+    // { label: "YouTube — documentation", value: "Siddharth Biswas", href: "https://youtube.com", kind: "instrument" },
+    {
+      label: "Google Scholar",
+      value: "Publications & citations",
+      href: "https://scholar.google.com",
+      kind: "channel",
+    },
+    {
+      label: "ResearchGate",
+      value: "PhD progress & preprints",
+      href: "https://researchgate.net",
+      kind: "channel",
+    },
+    {
+      label: "GitHub — /gesture-studies",
+      value: "Open patches & sketches",
+      href: "https://github.com",
+      kind: "instrument",
+    },
   ],
 };
 
-export type Project = {
+export type LegacyProject = {
   slug: string;
   title: string;
   year: string;
@@ -39,7 +79,7 @@ export type Project = {
 const img = (seed: string, w = 1200, h = 800) =>
   `https://picsum.photos/seed/sb-${seed}/${w}/${h}`;
 
-export const projects: Project[] = [
+export const legacyProjects: LegacyProject[] = [
   {
     slug: "gesture-to-midi-studies",
     title: "Gesture-to-MIDI Studies",
@@ -182,6 +222,128 @@ export const projects: Project[] = [
   },
 ];
 
+export type Project = {
+  number: string;
+  slug: string;
+  title: string;
+  year: string;
+  kind: string;
+  partner: string;
+  group: "featured" | "education";
+  tags: string[];
+  summary: string;
+  description: string[];
+  image: string;
+  imageAlt: string;
+};
+
+// Keep this value visible and easy to update once the date is confirmed.
+export const sanskarProjectYear = "YEAR TO BE CONFIRMED";
+
+export const projects: Project[] = [
+  {
+    number: "01",
+    slug: "a-body-in-relay",
+    title: "A Body in Relay",
+    year: "IN DEVELOPMENT",
+    kind: "DANCE / RESPONSIVE PERFORMANCE",
+    partner: "WITH YUXI JIANG",
+    group: "featured",
+    tags: ["Dance", "Improvisation", "Camera tracking", "Live systems"],
+    summary:
+      "An interdisciplinary collaboration exploring how movement, live musical decision-making and responsive digital systems can shape one another.",
+    description: [
+      "An interdisciplinary collaboration exploring how movement, live musical decision-making and responsive digital systems can shape one another.",
+      "Developed with dancer Yuxi Jiang, the project places the dancer, musician and technological system within an evolving relationship. Movement influences the musical environment, while live interventions alter the rules through which the system responds.",
+      "Rather than treating the body as a controller that simply triggers sound, A Body in Relay asks how control might move between performers, technologies and the space around them.",
+    ],
+    image: img("body-in-relay", 1600, 1100),
+    imageAlt: "Temporary visual reference for A Body in Relay",
+  },
+  {
+    number: "02",
+    slug: "dividual",
+    title: "DIVIDUAL",
+    year: "2026",
+    kind: "COLLABORATIVE PERFORMANCE / INSTALLATION",
+    partner: "TINDERBOX COLLECTIVE",
+    group: "featured",
+    tags: [
+      "Participation",
+      "Performance",
+      "Creative technology",
+      "Collective practice",
+    ],
+    summary:
+      "A collaborative project exploring how individual actions can become part of a shared creative system.",
+    description: [
+      "A collaborative project exploring how individual actions can become part of a shared creative system.",
+      "Developed through Tinderbox Collective’s Room to Play programme, DIVIDUAL brought together music, interaction and collective experimentation. The project invited performers and participants to influence a larger experience while remaining connected to their own individual choices.",
+      "My contribution included musical performance, collaborative development and experimentation with interactive approaches to participation.",
+    ],
+    image: img("dividual", 1600, 1100),
+    imageAlt: "Temporary visual reference for DIVIDUAL",
+  },
+  {
+    number: "03",
+    slug: "the-magic-show",
+    title: "The Magic Show",
+    year: "2026",
+    kind: "PARTICIPATORY PERFORMANCE",
+    partner: "TINDERBOX COLLECTIVE",
+    group: "featured",
+    tags: ["Play", "Participation", "Performance", "Collaboration"],
+    summary:
+      "A playful collaborative project built through performance, shared problem-solving and audience participation.",
+    description: [
+      "A playful collaborative project built through performance, shared problem-solving and audience participation.",
+      "Developed with artists and participants through Tinderbox Collective, The Magic Show used play as both a creative process and a way of bringing people together. The work grew through workshops, experiments and collective decisions rather than following a fixed structure from the beginning.",
+      "My involvement included musical performance, creative development and contributing to the shared experience of the project.",
+    ],
+    image: img("magic-show", 1600, 1100),
+    imageAlt: "Temporary visual reference for The Magic Show",
+  },
+  {
+    number: "04",
+    slug: "musical-development-anant-sangeet-academy",
+    title: "Musical Development at Anant Sangeet Academy",
+    year: "2024",
+    kind: "MUSIC EDUCATION",
+    partner: "ANANT SANGEET ACADEMY",
+    group: "education",
+    tags: ["Teaching", "Piano", "Mentorship", "Student performance"],
+    summary:
+      "Teaching, mentoring and supporting the musical development of young performers through piano lessons, recitals and creative music-making.",
+    description: [
+      "Teaching, mentoring and supporting the musical development of young performers through piano lessons, recitals and creative music-making.",
+      "From March to July 2024, I worked as a Piano Instructor at Anant Sangeet Academy. My role involved individual and group teaching, preparing students for performances and contributing to musical events organised by the academy.",
+      "The experience strengthened my interest in teaching as a creative practice—one that develops confidence, curiosity and individual musical identity alongside technical ability.",
+    ],
+    image: img("anant-sangeet", 1200, 900),
+    imageAlt:
+      "Temporary visual reference for Musical Development at Anant Sangeet Academy",
+  },
+  {
+    number: "05",
+    slug: "returning-through-music",
+    title: "Returning Through Music",
+    year: sanskarProjectYear,
+    kind: "EDUCATIONAL OUTREACH",
+    partner: "SANSKAR SCHOOL",
+    group: "education",
+    tags: ["Education", "Outreach", "Performance", "Creative practice"],
+    summary:
+      "A creative music initiative developed for students at Sanskar School, bringing together performance, learning and personal experience.",
+    description: [
+      "A creative music initiative developed for students at Sanskar School, bringing together performance, learning and personal experience.",
+      "Returning to the school as a musician and educator created an opportunity to share a journey that had once begun in the same environment. Through performance, conversation and practical musical activities, the project introduced students to different ways of learning, creating and building a life through music.",
+      "The session encouraged students to see musical practice not only as technical training, but as a space for curiosity, discipline and personal expression.",
+    ],
+    image: img("returning-through-music", 1200, 900),
+    imageAlt: "Temporary visual reference for Returning Through Music",
+  },
+];
+
 // export const performances = [
 //   { date: "2026-04-11", venue: "NIME 2026, Canberra", city: "AU", title: "Gesture / EEG Duet (solo)", note: "Paper + performance in the main programme.", image: img("perf1", 900, 600) },
 //   { date: "2025-11-02", venue: "Cafe OTO", city: "London", title: "Weekday set — Gesture-to-MIDI Studies", note: "Long-form solo, second of three commissioned nights.", image: img("perf2", 900, 600) },
@@ -276,8 +438,7 @@ export const performances = [
       "The work transformed audience density into dynamic musical parameters controlling balance, texture, and spatialisation.",
     context:
       "Created during a month-long residency investigating camera-based audience analysis.",
-    collaborators:
-      "Performed with a four-member improvisation ensemble.",
+    collaborators: "Performed with a four-member improvisation ensemble.",
     instrumentation:
       "Dual overhead cameras, YOLO-based audience detection, OSC routing, Max/MSP conducting system.",
     reflection:
@@ -375,18 +536,48 @@ export const writings = [
 ];
 
 export const researchAreas = [
-  { id: "gesture", label: "Gesture", note: "Hand and body movement as compositional material — mapped, misread, and answered." },
-  { id: "eeg", label: "EEG", note: "Frontal band power as a layer the performer cannot fully author." },
-  { id: "camera", label: "Camera tracking", note: "Single, multi, and depth — the room as a sensor." },
-  { id: "systems", label: "Interactive systems", note: "Max, SuperCollider, TouchDesigner — patched together, on purpose." },
-  { id: "sound", label: "Sound", note: "Acoustic, granular, feedback. Sound as the thing being negotiated." },
-  { id: "embodiment", label: "Embodiment", note: "The long thread. What technology cannot see, and what it makes newly visible." },
+  {
+    id: "gesture",
+    label: "Gesture",
+    note: "Hand and body movement as compositional material — mapped, misread, and answered.",
+  },
+  {
+    id: "eeg",
+    label: "EEG",
+    note: "Frontal band power as a layer the performer cannot fully author.",
+  },
+  {
+    id: "camera",
+    label: "Camera tracking",
+    note: "Single, multi, and depth — the room as a sensor.",
+  },
+  {
+    id: "systems",
+    label: "Interactive systems",
+    note: "Max, SuperCollider, TouchDesigner — patched together, on purpose.",
+  },
+  {
+    id: "sound",
+    label: "Sound",
+    note: "Acoustic, granular, feedback. Sound as the thing being negotiated.",
+  },
+  {
+    id: "embodiment",
+    label: "Embodiment",
+    note: "The long thread. What technology cannot see, and what it makes newly visible.",
+  },
 ];
 
 export const researchLinks: Array<[string, string]> = [
-  ["gesture", "camera"], ["gesture", "systems"], ["camera", "systems"],
-  ["eeg", "gesture"], ["eeg", "systems"], ["systems", "sound"],
-  ["camera", "embodiment"], ["gesture", "embodiment"], ["sound", "embodiment"],
+  ["gesture", "camera"],
+  ["gesture", "systems"],
+  ["camera", "systems"],
+  ["eeg", "gesture"],
+  ["eeg", "systems"],
+  ["systems", "sound"],
+  ["camera", "embodiment"],
+  ["gesture", "embodiment"],
+  ["sound", "embodiment"],
 ];
 
 export const timeline = [
