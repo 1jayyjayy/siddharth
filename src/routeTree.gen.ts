@@ -17,8 +17,10 @@ import { Route as PerformancesRouteImport } from './routes/performances'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WritingsIndexRouteImport } from './routes/writings.index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as PerformancesIndexRouteImport } from './routes/performances.index'
+import { Route as WritingsSlugRouteImport } from './routes/writings.$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 import { Route as PerformancesSlugRouteImport } from './routes/performances.$slug'
 
@@ -62,6 +64,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WritingsIndexRoute = WritingsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WritingsRoute,
+} as any)
 const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -71,6 +78,11 @@ const PerformancesIndexRoute = PerformancesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => PerformancesRoute,
+} as any)
+const WritingsSlugRoute = WritingsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => WritingsRoute,
 } as any)
 const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   id: '/$slug',
@@ -91,11 +103,13 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRouteWithChildren
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/writings': typeof WritingsRoute
+  '/writings': typeof WritingsRouteWithChildren
   '/performances/$slug': typeof PerformancesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/writings/$slug': typeof WritingsSlugRoute
   '/performances/': typeof PerformancesIndexRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/writings/': typeof WritingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -103,11 +117,12 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/writings': typeof WritingsRoute
   '/performances/$slug': typeof PerformancesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/writings/$slug': typeof WritingsSlugRoute
   '/performances': typeof PerformancesIndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/writings': typeof WritingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -118,11 +133,13 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRouteWithChildren
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/writings': typeof WritingsRoute
+  '/writings': typeof WritingsRouteWithChildren
   '/performances/$slug': typeof PerformancesSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/writings/$slug': typeof WritingsSlugRoute
   '/performances/': typeof PerformancesIndexRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/writings/': typeof WritingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -137,8 +154,10 @@ export interface FileRouteTypes {
     | '/writings'
     | '/performances/$slug'
     | '/projects/$slug'
+    | '/writings/$slug'
     | '/performances/'
     | '/projects/'
+    | '/writings/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -146,11 +165,12 @@ export interface FileRouteTypes {
     | '/contact'
     | '/research'
     | '/sitemap.xml'
-    | '/writings'
     | '/performances/$slug'
     | '/projects/$slug'
+    | '/writings/$slug'
     | '/performances'
     | '/projects'
+    | '/writings'
   id:
     | '__root__'
     | '/'
@@ -163,8 +183,10 @@ export interface FileRouteTypes {
     | '/writings'
     | '/performances/$slug'
     | '/projects/$slug'
+    | '/writings/$slug'
     | '/performances/'
     | '/projects/'
+    | '/writings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -175,7 +197,7 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRouteWithChildren
   ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  WritingsRoute: typeof WritingsRoute
+  WritingsRoute: typeof WritingsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -236,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/writings/': {
+      id: '/writings/'
+      path: '/'
+      fullPath: '/writings/'
+      preLoaderRoute: typeof WritingsIndexRouteImport
+      parentRoute: typeof WritingsRoute
+    }
     '/projects/': {
       id: '/projects/'
       path: '/'
@@ -249,6 +278,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/performances/'
       preLoaderRoute: typeof PerformancesIndexRouteImport
       parentRoute: typeof PerformancesRoute
+    }
+    '/writings/$slug': {
+      id: '/writings/$slug'
+      path: '/$slug'
+      fullPath: '/writings/$slug'
+      preLoaderRoute: typeof WritingsSlugRouteImport
+      parentRoute: typeof WritingsRoute
     }
     '/projects/$slug': {
       id: '/projects/$slug'
@@ -295,6 +331,20 @@ const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
   ProjectsRouteChildren,
 )
 
+interface WritingsRouteChildren {
+  WritingsSlugRoute: typeof WritingsSlugRoute
+  WritingsIndexRoute: typeof WritingsIndexRoute
+}
+
+const WritingsRouteChildren: WritingsRouteChildren = {
+  WritingsSlugRoute: WritingsSlugRoute,
+  WritingsIndexRoute: WritingsIndexRoute,
+}
+
+const WritingsRouteWithChildren = WritingsRoute._addFileChildren(
+  WritingsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -303,7 +353,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRouteWithChildren,
   ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  WritingsRoute: WritingsRoute,
+  WritingsRoute: WritingsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
