@@ -8,6 +8,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Siddharth Biswas" },
+      
       {
         name: "description",
         content:
@@ -118,7 +119,7 @@ function About() {
               </p>
             </div>
           </div> */}
-          <div className="col-span-12 reveal md:col-span-6 md:col-start-7 md:pt-6">
+          <div className="col-span-12 reveal md:col-span-6 md:col-start-7 md:pt-8">
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-copper">
               Biography
             </p>
