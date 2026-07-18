@@ -145,6 +145,7 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — Siddharth Biswas" },
       {
         name: "description",
+        
         content:
           "Direct contact and public channels — commissions, residencies, and collaborations.",
       },
