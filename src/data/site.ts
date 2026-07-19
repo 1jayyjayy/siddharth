@@ -583,42 +583,34 @@ export const researchLinks: Array<[string, string]> = [
 export const timeline = [
   {
     year: "2026",
-    label:
-      "Collaborative work with Tinderbox Collective through Room to Play, including DIVIDUAL and The Magic Show. Participated in NIME 2026 and began developing A Body in Relay with dancer Yuxi Jiang.",
+    label: "Tinderbox Collective, NIME and A Body in Relay",
   },
   {
-    year: "2025–",
-    label:
-      "PhD in Creative Music Practice at Edinburgh College of Art, University of Edinburgh, exploring relationships between gesture, physiological signals, participation and responsive musical systems.",
+    year: "2025–present",
+    label: "PhD Creative Music Practice Candidate, University of Edinburgh",
   },
   {
     year: "2024–2025",
-    label:
-      "Piano teacher at Anant Sangeet Academy, working across individual tuition, musical development and student performance.",
+    label: "Piano Teacher, Anant Sangeet Academy",
   },
   {
     year: "2023–2024",
-    label:
-      "Sound and Art Designer for Beau Bowen’s avant-garde rock opera, developing motion-responsive sound and AI-generated visual elements for live performance.",
+    label: "Sound & Art Designer, Beau Bowen",
   },
   {
-    year: "2023",
-    label:
-      "Completed an MMus in Music with Distinction at Royal Holloway. Developed a portfolio of camera- and gesture-controlled compositions using motion tracking, Python, MIDI and Logic Pro.",
+    year: "2022–2023",
+    label: "MMus Music, Distinction, Royal Holloway",
   },
   {
     year: "2020–2021",
-    label:
-      "Assistant Music Arranger at WeJam, creating and notating popular song arrangements for an interactive group music-making platform.",
+    label: "Assistant Music Arranger, WeJam",
   },
   {
     year: "2019–2022",
-    label:
-      "BMus Music with First-Class Honours at Royal Holloway. Developed a practice spanning piano performance, composition, beatboxing, Indian classical music, sound design and creative technology.",
+    label: "BMus Music, First-Class Honours, Royal Holloway",
   },
   {
     year: "2018–2019",
-    label:
-      "Early professional studio and performance work as a session keyboard player and assistant studio producer in Jaipur.",
+    label: "Session and studio work, Jaipur",
   },
 ];

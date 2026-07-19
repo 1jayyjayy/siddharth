@@ -185,7 +185,7 @@ function About() {
               An abridged programme note — selected moments from the past that continue to shape the work now.
             </p>
           </div>
-          <ol className="col-span-12 md:col-span-7 md:col-start-6 space-y-0">
+          {/* <ol className="col-span-12 md:col-span-7 md:col-start-6 space-y-0">
             {timeline.map((t, i) => (
               <li
                 key={t.year}
@@ -200,7 +200,84 @@ function About() {
                 </span>
               </li>
             ))}
-          </ol>
+          </ol> */}
+          <ol className="col-span-12 md:col-span-7 md:col-start-6 space-y-0">
+  {timeline.map((t, i) => (
+    <li
+      key={t.year}
+      data-reveal-delay={String(i * 80)}
+      className="
+        reveal
+        group
+        relative
+        grid
+        grid-cols-12
+        items-baseline
+        gap-4
+        border-t
+        border-white/12
+        py-6
+        pl-4
+        transition-all
+        duration-500
+        ease-[cubic-bezier(0.22,1,0.36,1)]
+        hover:-translate-y-1
+        hover:bg-white/[0.03]
+        hover:shadow-[0_12px_30px_rgba(0,0,0,0.18)]
+      "
+    >
+      {/* Copper accent */}
+      <span
+        className="
+          absolute
+          left-0
+          top-0
+          h-full
+          w-[2px]
+          origin-top
+          scale-y-0
+          bg-copper
+          transition-transform
+          duration-500
+          ease-[cubic-bezier(0.22,1,0.36,1)]
+          group-hover:scale-y-100
+        "
+      />
+
+      <span
+        className="
+          col-span-3
+          font-mono
+          text-xs
+          uppercase
+          tracking-[0.22em]
+          text-copper/80
+          transition-all
+          duration-300
+          group-hover:text-copper
+          group-hover:translate-x-1
+        "
+      >
+        {t.year}
+      </span>
+
+      <span
+        className="
+          col-span-9
+          font-display
+          text-2xl
+          md:text-3xl
+          text-bone
+          transition-colors
+          duration-300
+          group-hover:text-white
+        "
+      >
+        {t.label}
+      </span>
+    </li>
+  ))}
+</ol>
         </div>
       </section>
 
