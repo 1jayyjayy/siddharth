@@ -145,7 +145,7 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — Siddharth Biswas" },
       {
         name: "description",
-        
+
         content:
           "Direct contact and public channels — commissions, residencies, and collaborations.",
       },
@@ -441,7 +441,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                 transition={{ duration: 0.7, delay: 0.15, ease: "circOut" }}
                 className="lg:col-span-5 space-y-8"
               >
-                <div className="glass-card card-3d-hover p-6 md:p-8 rounded-xl">
+                <div className="glass-card card-3d-hover card-artifact p-6 md:p-8 rounded-xl">
                   <div className="card-3d-content">
                     <h2 className="text-2xl font-display font-semibold mb-6">
                       Direct Contact Information
@@ -478,7 +478,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                   </div>
                 </div>
 
-                <div className="glass-card card-3d-hover p-6 md:p-8 rounded-xl">
+                <div className="glass-card card-3d-hover card-artifact p-6 md:p-8 rounded-xl">
                   <div className="card-3d-content">
                     <h2 className="text-2xl font-display font-semibold mb-5">
                       Follow My Journey
@@ -510,7 +510,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
                 transition={{ duration: 0.7, delay: 0.25, ease: "circOut" }}
                 className="lg:col-span-7"
               >
-                <div className="glass-card card-3d-hover p-6 md:p-10 rounded-xl">
+                <div className="glass-card card-3d-hover card-artifact p-6 md:p-10 rounded-xl">
                   <div className="card-3d-content">
                     <h2 className="text-2xl md:text-3xl font-display font-bold mb-7">
                       Send a Message Directly
@@ -676,7 +676,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
             transition={{ duration: 0.8, delay: 0.4, ease: "circOut" }}
             className="mt-20 md:mt-24 max-w-5xl mx-auto"
           >
-            <div className="glass-card card-3d-hover p-6 md:p-8 rounded-xl overflow-hidden">
+            <div className="glass-card card-3d-hover card-artifact p-6 md:p-8 rounded-xl overflow-hidden">
               <div className="card-3d-content">
                 <h2 className="text-2xl md:text-3xl font-display font-bold mb-5 text-center">
                   Studio Location & Map

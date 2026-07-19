@@ -581,9 +581,44 @@ export const researchLinks: Array<[string, string]> = [
 ];
 
 export const timeline = [
-  { year: "2023–", label: "PhD, Creative Music Technology" },
-  { year: "2022", label: "MA Composition, distinction" },
-  { year: "2021", label: "First solo camera-tracking set" },
-  { year: "2019", label: "Ensemble commissions begin" },
-  { year: "2017", label: "Composition studies, undergraduate" },
+  {
+    year: "2026",
+    label:
+      "Collaborative work with Tinderbox Collective through Room to Play, including DIVIDUAL and The Magic Show. Participated in NIME 2026 and began developing A Body in Relay with dancer Yuxi Jiang.",
+  },
+  {
+    year: "2025–",
+    label:
+      "PhD in Creative Music Practice at Edinburgh College of Art, University of Edinburgh, exploring relationships between gesture, physiological signals, participation and responsive musical systems.",
+  },
+  {
+    year: "2024–2025",
+    label:
+      "Piano teacher at Anant Sangeet Academy, working across individual tuition, musical development and student performance.",
+  },
+  {
+    year: "2023–2024",
+    label:
+      "Sound and Art Designer for Beau Bowen’s avant-garde rock opera, developing motion-responsive sound and AI-generated visual elements for live performance.",
+  },
+  {
+    year: "2023",
+    label:
+      "Completed an MMus in Music with Distinction at Royal Holloway. Developed a portfolio of camera- and gesture-controlled compositions using motion tracking, Python, MIDI and Logic Pro.",
+  },
+  {
+    year: "2020–2021",
+    label:
+      "Assistant Music Arranger at WeJam, creating and notating popular song arrangements for an interactive group music-making platform.",
+  },
+  {
+    year: "2019–2022",
+    label:
+      "BMus Music with First-Class Honours at Royal Holloway. Developed a practice spanning piano performance, composition, beatboxing, Indian classical music, sound design and creative technology.",
+  },
+  {
+    year: "2018–2019",
+    label:
+      "Early professional studio and performance work as a session keyboard player and assistant studio producer in Jaipur.",
+  },
 ];

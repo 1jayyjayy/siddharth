@@ -182,8 +182,7 @@ function About() {
               A short timeline.
             </h2>
             <p className="mt-6 max-w-sm text-bone/70 text-sm">
-              An abridged programme note — the parts of the past that still
-              inform the current work.
+              An abridged programme note — selected moments from the past that continue to shape the work now.
             </p>
           </div>
           <ol className="col-span-12 md:col-span-7 md:col-start-6 space-y-0">
