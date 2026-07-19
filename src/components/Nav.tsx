@@ -13,27 +13,29 @@ const items = [
 
 export function Nav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const [scrolled, setScrolled] = useState(false);
+  // const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // useEffect(() => {
+  //   const onScroll = () => setScrolled(window.scrollY > 24);
+  //   onScroll();
+  //   window.addEventListener("scroll", onScroll, { passive: true });
+  //   return () => window.removeEventListener("scroll", onScroll);
+  // }, []);
 
   useEffect(() => setOpen(false), [pathname]);
 
   return (
     <header
-      className={[
-        "fixed inset-x-0 top-0 z-40 transition-[background,backdrop-filter,border-color,color] duration-500",
-        scrolled
-          ? "bg-[color-mix(in_oklab,var(--bone)_86%,transparent)] backdrop-blur-md border-b border-[color-mix(in_oklab,var(--espresso)_10%,transparent)] text-espresso"
-          : "bg-transparent text-current",
-      ].join(" ")}
-    >
+  className="
+    fixed inset-x-0 top-0 z-40
+    bg-bone/80
+    backdrop-blur-lg
+    border-b border-black/5
+    text-espresso
+    transition-all duration-500
+  "
+>
       <div className="mx-auto grid max-w-[1440px] grid-cols-12 items-center gap-4 px-6 py-4 md:px-10">
         <Link to="/" className="col-span-6 md:col-span-3 flex items-baseline gap-3 min-w-0">
           <span className="font-display text-lg leading-none tracking-tight">
