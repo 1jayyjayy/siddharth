@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Footer } from "@/components/Footer";
+import { DividualCaseStudy } from "@/components/projects/DividualCaseStudy";
 import { useReveal } from "@/components/useReveal";
-import { projects } from "@/data/site";
+import { projects, type Project } from "@/data/site";
 
 export const Route = createFileRoute("/projects/$slug")({
   loader: ({ params }) => {
@@ -57,9 +58,24 @@ export const Route = createFileRoute("/projects/$slug")({
 
 function ProjectPage() {
   const { project } = Route.useLoaderData();
-  const root = useReveal();
   const index = projects.findIndex((item) => item.slug === project.slug);
   const next = projects[(index + 1) % projects.length];
+
+  if (project.slug === "dividual") {
+    return <DividualCaseStudy project={project} next={next} />;
+  }
+
+  return <GenericProjectPage project={project} next={next} />;
+}
+
+function GenericProjectPage({
+  project,
+  next,
+}: {
+  project: Project;
+  next: Project;
+}) {
+  const root = useReveal();
 
   return (
     <div ref={root} className="min-h-screen bg-bone text-espresso">

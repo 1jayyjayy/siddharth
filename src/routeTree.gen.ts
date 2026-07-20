@@ -22,6 +22,7 @@ import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as PerformancesIndexRouteImport } from './routes/performances.index'
 import { Route as WritingsSlugRouteImport } from './routes/writings.$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as PerformancesPianoRepertoireRouteImport } from './routes/performances.piano-repertoire'
 import { Route as PerformancesSlugRouteImport } from './routes/performances.$slug'
 
 const WritingsRoute = WritingsRouteImport.update({
@@ -89,6 +90,12 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ProjectsRoute,
 } as any)
+const PerformancesPianoRepertoireRoute =
+  PerformancesPianoRepertoireRouteImport.update({
+    id: '/piano-repertoire',
+    path: '/piano-repertoire',
+    getParentRoute: () => PerformancesRoute,
+  } as any)
 const PerformancesSlugRoute = PerformancesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -105,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/writings': typeof WritingsRouteWithChildren
   '/performances/$slug': typeof PerformancesSlugRoute
+  '/performances/piano-repertoire': typeof PerformancesPianoRepertoireRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/writings/$slug': typeof WritingsSlugRoute
   '/performances/': typeof PerformancesIndexRoute
@@ -118,6 +126,7 @@ export interface FileRoutesByTo {
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/performances/$slug': typeof PerformancesSlugRoute
+  '/performances/piano-repertoire': typeof PerformancesPianoRepertoireRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/writings/$slug': typeof WritingsSlugRoute
   '/performances': typeof PerformancesIndexRoute
@@ -135,6 +144,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/writings': typeof WritingsRouteWithChildren
   '/performances/$slug': typeof PerformancesSlugRoute
+  '/performances/piano-repertoire': typeof PerformancesPianoRepertoireRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/writings/$slug': typeof WritingsSlugRoute
   '/performances/': typeof PerformancesIndexRoute
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/writings'
     | '/performances/$slug'
+    | '/performances/piano-repertoire'
     | '/projects/$slug'
     | '/writings/$slug'
     | '/performances/'
@@ -166,6 +177,7 @@ export interface FileRouteTypes {
     | '/research'
     | '/sitemap.xml'
     | '/performances/$slug'
+    | '/performances/piano-repertoire'
     | '/projects/$slug'
     | '/writings/$slug'
     | '/performances'
@@ -182,6 +194,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/writings'
     | '/performances/$slug'
+    | '/performances/piano-repertoire'
     | '/projects/$slug'
     | '/writings/$slug'
     | '/performances/'
@@ -293,6 +306,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof ProjectsRoute
     }
+    '/performances/piano-repertoire': {
+      id: '/performances/piano-repertoire'
+      path: '/piano-repertoire'
+      fullPath: '/performances/piano-repertoire'
+      preLoaderRoute: typeof PerformancesPianoRepertoireRouteImport
+      parentRoute: typeof PerformancesRoute
+    }
     '/performances/$slug': {
       id: '/performances/$slug'
       path: '/$slug'
@@ -305,11 +325,13 @@ declare module '@tanstack/react-router' {
 
 interface PerformancesRouteChildren {
   PerformancesSlugRoute: typeof PerformancesSlugRoute
+  PerformancesPianoRepertoireRoute: typeof PerformancesPianoRepertoireRoute
   PerformancesIndexRoute: typeof PerformancesIndexRoute
 }
 
 const PerformancesRouteChildren: PerformancesRouteChildren = {
   PerformancesSlugRoute: PerformancesSlugRoute,
+  PerformancesPianoRepertoireRoute: PerformancesPianoRepertoireRoute,
   PerformancesIndexRoute: PerformancesIndexRoute,
 }
 
