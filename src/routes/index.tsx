@@ -6,14 +6,55 @@ import { Footer } from "@/components/Footer";
 import { useReveal } from "@/components/useReveal";
 import { projects, site, researchAreas } from "@/data/site";
 
+const homepageTitle =
+  "Siddharth Biswas — Composer, Performer & Music Technology Researcher";
+
+const homepageDescription =
+  "Official portfolio of Siddharth Biswas, a composer, performer and PhD researcher working with gesture, EEG, camera tracking and interactive music systems.";
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Siddharth Biswas — Composer, Performer & Music Technology Researcher" },
+      {
+        title: homepageTitle,
+      },
       {
         name: "description",
-        content:
-          "Composer, performer and PhD researcher working with gesture, EEG, camera tracking and interactive music systems.",
+        content: homepageDescription,
+      },
+      {
+        property: "og:title",
+        content: homepageTitle,
+      },
+      {
+        property: "og:description",
+        content: homepageDescription,
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        property: "og:url",
+        content: "https://www.siddharthbiswas.com/",
+      },
+      {
+        name: "twitter:card",
+        content: "summary",
+      },
+      {
+        name: "twitter:title",
+        content: homepageTitle,
+      },
+      {
+        name: "twitter:description",
+        content: homepageDescription,
+      },
+    ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://www.siddharthbiswas.com/",
       },
     ],
   }),
